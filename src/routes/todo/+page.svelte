@@ -1,10 +1,12 @@
-<script>
-  import TodoListItem from "./lib/TodoListItem.svelte";
-
+<script lang="ts">
+  import type {TodoSchema} from "src/schema/interface";
+  import TodoListItem from "./TodoListItem.svelte";
+  import '../styles.css';
+  
   let text = "";
   let error = ""
-  let todoList = [];
-  const handleSubmit = (e) => {
+  let todoList: TodoSchema[] = [];
+  const handleSubmit = (e: any) => {
     e.preventDefault();
 
     if (text.trim() === "") {
