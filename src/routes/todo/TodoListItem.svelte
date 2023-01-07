@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import type { TodoSchema } from 'src/schema/interface';
+
 	export let todo: TodoSchema;
 
 	const dispatch = createEventDispatcher();
+
 	const handleDone = () => {};
 
-	const handleRemove = (id: number) => {
-		dispatch('delete', { id });
+	const handleRemove = () => {
+		dispatch('delete', { id: todo.id });
 	};
 </script>
 
@@ -17,7 +19,7 @@
 	</h3>
 	<div class="buttonGroup">
 		<button on:click={handleDone}>✅</button>
-		<button on:click={() => handleRemove(todo.id)}>❌</button>
+		<button on:click={handleRemove}>❌</button>
 	</div>
 </li>
 

@@ -9,9 +9,7 @@
 	let text = '';
 	let error = '';
 	let todoList: TodoSchema[] = [];
-	const handleSubmit = (e: any) => {
-		e.preventDefault();
-
+	const handleSubmit = () => {
 		if (text.trim() === '') {
 			error = 'Required!';
 			return;
@@ -44,7 +42,7 @@
 <main>
 	<h1>To do list</h1>
 	<div class="container">
-		<form on:submit={handleSubmit}>
+		<form on:submit|preventDefault={handleSubmit}>
 			<input type="text" class={error ? 'error' : ''} bind:value={text} on:input={removeError} />
 		</form>
 		<div>

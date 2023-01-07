@@ -6,7 +6,7 @@
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
+		<a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
 			<img src={logo} alt="SvelteKit" />
 		</a>
 	</div>
@@ -43,7 +43,7 @@
 
 	.corner {
 		width: 4.5em;
-    height: 4em;
+		height: 4em;
 	}
 
 	.corner a {
