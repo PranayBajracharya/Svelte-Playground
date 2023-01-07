@@ -1,9 +1,14 @@
 <script lang="ts">
-	export let todo: import('src/schema/interface').TodoSchema;
+	import { createEventDispatcher } from 'svelte';
+	import type { TodoSchema } from 'src/schema/interface';
+	export let todo: TodoSchema;
 
+	const dispatch = createEventDispatcher();
 	const handleDone = () => {};
 
-	const handleRemove = () => {};
+	const handleRemove = (id: number) => {
+		dispatch('delete', { id });
+	};
 </script>
 
 <li>
@@ -12,13 +17,13 @@
 	</h3>
 	<div class="buttonGroup">
 		<button on:click={handleDone}>✅</button>
-		<button on:click={handleRemove}>❌</button>
+		<button on:click={() => handleRemove(todo.id)}>❌</button>
 	</div>
 </li>
 
 <style>
 	li {
-		background: radial-gradient(var(--color-text), rgb(208, 208, 255));
+		background: radial-gradient(var(--color-text), rgb(208, 208, 255) 160%);
 		color: black;
 		text-align: left;
 		padding: 8px 12px;

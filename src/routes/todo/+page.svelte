@@ -30,6 +30,10 @@
 	const removeError = () => {
 		error = '';
 	};
+
+	const handleDelete = (event: CustomEvent) => {
+		todoList = todoList.filter((todo) => todo.id !== event.detail.id);
+	};
 </script>
 
 <svelte:head>
@@ -46,7 +50,7 @@
 		<div>
 			<ul use:autoAnimate>
 				{#each todoList as todo (todo.id)}
-					<TodoListItem {todo} />
+					<TodoListItem {todo} on:delete={handleDelete} />
 				{/each}
 			</ul>
 		</div>
@@ -68,7 +72,7 @@
 	input {
 		outline: none;
 		padding: 6px 10px;
-		width: 372px;
+		width: 376px;
 		border-radius: 4px;
 		font-size: 1.17em;
 	}

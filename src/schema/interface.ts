@@ -1,4 +1,4 @@
-export interface TodoSchema {
-  id: Number;
-  name: String;
+export type TodoSchema = {
+  id: number;
+  name: string;
 }
