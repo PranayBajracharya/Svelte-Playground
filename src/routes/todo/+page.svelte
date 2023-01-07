@@ -1,5 +1,7 @@
 <script lang="ts">
-	import autoAnimate from '@formkit/auto-animate';
+	import autoAnimateTS from '@formkit/auto-animate';
+	const autoAnimate = autoAnimateTS as any;
+
 	import type { TodoSchema } from 'src/schema/interface';
 	import TodoListItem from './TodoListItem.svelte';
 	import '../styles.css';
@@ -25,12 +27,15 @@
 		text = '';
 	};
 
-	const autoAnimateTS = autoAnimate as any;
-
 	const removeError = () => {
 		error = '';
 	};
 </script>
+
+<svelte:head>
+	<title>Todo</title>
+	<meta name="description" content="Svelte practice" />
+</svelte:head>
 
 <main>
 	<h1>To do list</h1>
@@ -38,12 +43,14 @@
 		<form on:submit={handleSubmit}>
 			<input type="text" class={error ? 'error' : ''} bind:value={text} on:input={removeError} />
 		</form>
+		<div>
+			<ul use:autoAnimate>
+				{#each todoList as todo (todo.id)}
+					<TodoListItem {todo} />
+				{/each}
+			</ul>
+		</div>
 	</div>
-	<ul use:autoAnimateTS>
-		{#each todoList as todo (todo.id)}
-			<TodoListItem {todo} />
-		{/each}
-	</ul>
 </main>
 
 <style>
@@ -54,11 +61,16 @@
 	ul {
 		list-style: none;
 		padding: 0;
+		margin: 0;
+		width: 400px;
 	}
 
 	input {
-		padding: 5px 5px;
 		outline: none;
+		padding: 6px 10px;
+		width: 372px;
+		border-radius: 4px;
+		font-size: 1.17em;
 	}
 
 	input.error {
@@ -67,7 +79,8 @@
 
 	.container {
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		align-items: center;
 		max-width: 1200px;
 		margin: auto;
 	}

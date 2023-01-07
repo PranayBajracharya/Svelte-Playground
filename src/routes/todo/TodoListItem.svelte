@@ -18,10 +18,10 @@
 
 <style>
 	li {
-		background: white;
+		background: radial-gradient(var(--color-text), rgb(208, 208, 255));
 		color: black;
 		text-align: left;
-		padding: 5px 10px;
+		padding: 8px 12px;
 		margin: 10px 0px;
 		border-radius: 4px;
 		display: flex;

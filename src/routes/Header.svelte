@@ -30,7 +30,7 @@
 
 	<div class="corner">
 		<a href="https://github.com/pranaybajracharya" target="_blank" rel="noopener noreferrer">
-			<img src={github} alt="GitHub" />
+			<img src={github} class="github-img" alt="GitHub" />
 		</a>
 	</div>
 </header>
@@ -42,8 +42,8 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		width: 4.5em;
+    height: 4em;
 	}
 
 	.corner a {
@@ -60,10 +60,14 @@
 		object-fit: contain;
 	}
 
+	.github-img {
+		filter: invert(100%);
+	}
+
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
+		--background: rgba(125, 125, 125, 0.8);
 	}
 
 	svg {

@@ -6,15 +6,15 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
 <section>
 	<h1>
 		<span class="welcome">
 			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
+				<source srcset={welcome} class="hero-image" type="image/webp" />
+				<img src={welcome_fallback} class="hero-image" alt="Welcome" />
 			</picture>
 		</span>
 		Welcome to my <br />SvelteKit <br />Practice Room
@@ -50,5 +50,9 @@
 		height: 100%;
 		top: 0;
 		display: block;
+	}
+
+	.hero-image {
+		filter: grayscale(1) contrast(1.2) sepia(1.2) drop-shadow(0px 0px 2px rgb(255, 223, 39));
 	}
 </style>
