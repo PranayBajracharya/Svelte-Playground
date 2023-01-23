@@ -14,11 +14,11 @@
 </script>
 
 <li>
-	<h3>
+	<h3 class="m-0">
 		{todo.name}
 	</h3>
-	<div class="buttonGroup">
-		<button on:click={handleDone}>✅</button>
+	<div class="flex">
+		<!-- <button on:click={handleDone}>✅</button> -->
 		<button on:click={handleRemove}>❌</button>
 	</div>
 </li>
@@ -34,12 +34,6 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-	}
-	h3 {
-		margin: 0;
-	}
-	.buttonGroup {
-		display: flex;
 	}
 	button {
 		border: none;

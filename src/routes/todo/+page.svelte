@@ -39,9 +39,9 @@
 	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
-<main>
-	<h1>To do list</h1>
-	<div class="container">
+<div class="flex flex-col items-center">
+	<h1 class="my-4">To do list</h1>
+	<div class="max-w-[90vw] w-[24rem]">
 		<form on:submit|preventDefault={handleSubmit}>
 			<input type="text" class={error ? 'error' : ''} bind:value={text} on:input={removeError} />
 		</form>
@@ -53,37 +53,19 @@
 			</ul>
 		</div>
 	</div>
-</main>
+</div>
 
 <style>
-	h1 {
-		margin-block: 1rem;
-	}
-
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		width: 400px;
-	}
-
 	input {
 		outline: none;
 		padding: 6px 10px;
-		width: 376px;
+		width: 100%;
 		border-radius: 4px;
 		font-size: 1.17em;
+		color: black;
 	}
 
 	input.error {
 		border: 2px solid red;
-	}
-
-	.container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		max-width: 1200px;
-		margin: auto;
 	}
 </style>

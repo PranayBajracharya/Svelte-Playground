@@ -9,8 +9,8 @@
 	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
-<section>
-	<h1>
+<section class="container flex flex-col flex-[0.6] justify-center items-center w-full">
+	<h1 class="w-full">
 		<span class="welcome">
 			<picture>
 				<source srcset={welcome} class="hero-image" type="image/webp" />
@@ -24,18 +24,6 @@
 </section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
 	.welcome {
 		display: block;
 		position: relative;
