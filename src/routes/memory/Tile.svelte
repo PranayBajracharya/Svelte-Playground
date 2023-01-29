@@ -1,10 +1,25 @@
 <script lang="ts">
-	import svelte from '$lib/icons/svelte.svg';
+	import { createEventDispatcher } from 'svelte';
 	import astro from '$lib/icons/astro.svg';
+	import type { TileSchema } from 'src/schema/interface';
+
+	const dispatch = createEventDispatcher();
+
+	export let tech: TileSchema;
+	export let reset: boolean;
 
 	let frontFaced = true;
 
+	$: if (!tech.done && reset) {
+		frontFaced = true;
+	}
+
+	$: if (tech.done) {
+		frontFaced = false;
+	}
+
 	const handleFlipTile = () => {
+		dispatch('flip', tech);
 		frontFaced = !frontFaced;
 	};
 </script>
@@ -12,18 +27,18 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="aspect-square max-h-[10vh] rounded-full relative select-none" on:click={handleFlipTile}>
 	<div
-		class="grid place-items-center h-full w-full rounded-full bg-slate-100 tile"
+		class="grid place-items-center h-full w-full rounded-full bg-slate-700 tile"
 		class:front-face={frontFaced}
 		class:back-face={!frontFaced}
 	>
-		<img class="w-[50%]" src={svelte} alt="Svelte" />
+		<img class="w-[50%]" src={astro} alt="Svelte" />
 	</div>
 	<div
-		class="grid place-items-center h-full w-full rounded-full bg-slate-600 tile"
+		class="grid place-items-center h-full w-full rounded-full bg-slate-100 tile"
 		class:front-face={!frontFaced}
 		class:back-face={frontFaced}
 	>
-		<img class="w-[50%]" src={astro} alt="Svelte" />
+		<img class="w-[50%]" src={`src/lib/icons/${tech.name}.svg`} alt="Svelte" />
 	</div>
 </div>
 
