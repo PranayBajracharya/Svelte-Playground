@@ -5,3 +5,13 @@ export function shuffleArray<T>(array: T[]) {
 	}
 	return array;
 }
+
+function formatNumber(num: number): string {
+	return num.toString().padStart(3, '0');
+}
+
+export function formatTime(ms: number): string {
+	let seconds = Math.floor(ms / 1000);
+	let milliseconds = formatNumber(ms - seconds * 1000);
+	return seconds + ':' + milliseconds.toString().slice(0, -1);
+}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { techArray } from '$lib/data/memory';
-	import { shuffleArray } from '$lib/utils/common';
+	import { FLIP_TIME, techArray } from '$lib/data/memory';
+	import { formatTime, shuffleArray } from '$lib/utils/common';
 	import type { TileSchema } from 'src/schema/interface';
 	import Tile from './Tile.svelte';
 
@@ -16,13 +16,26 @@
 	let stack: TileSchema[] = [];
 	let reset = false;
 	let score = 0;
+	let moves = 0;
+	let time = 0;
 
 	const handleFlip = (event: { detail: TileSchema }) => {
-		console.log(event.detail);
+		console.log(stack, event.detail);
+
+		if (stack.length > 0 && stack[0].index === event.detail.index) {
+			stack.pop();
+			stack = stack;
+			return;
+		}
 		stack = [...stack, event.detail];
 	};
 
 	$: if (stack.length > 1) {
+		moves += 1;
+
+		/**
+		 * Update when match
+		 */
 		if (stack[0].name === stack[1].name) {
 			const newValue0 = {
 				...finalTechArray[stack[0].index],
@@ -42,10 +55,14 @@
 		stack = [];
 		setTimeout(() => {
 			reset = true;
-		}, 500);
+		}, FLIP_TIME);
 	} else {
 		reset = false;
 	}
+
+	const timer = setInterval(() => {
+		time += 10;
+	}, 10);
 </script>
 
 <svelte:head>
@@ -73,13 +90,13 @@
 				class="flex justify-between w-44 max-w-[45%] gap-2 bg-amber-300 text-zinc-900 py-2 px-4 rounded-lg"
 			>
 				<h3 class="">Time:</h3>
-				<h3 class="">0:00</h3>
+				<h3 class="">{formatTime(time)}</h3>
 			</div>
 			<div
 				class="flex justify-between w-44 max-w-[45%] gap-2 bg-amber-300 text-zinc-900 py-2 px-4 rounded-lg"
 			>
-				<h3 class="">Score:</h3>
-				<h3 class="">{score}</h3>
+				<h3 class="">Moves:</h3>
+				<h3 class="">{moves}</h3>
 			</div>
 		</div>
 	</div>

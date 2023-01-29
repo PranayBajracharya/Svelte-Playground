@@ -1,3 +1,4 @@
+export const FLIP_TIME = 500; // in milliseconds
 export const techArray = [
 	'astro',
 	'css3',

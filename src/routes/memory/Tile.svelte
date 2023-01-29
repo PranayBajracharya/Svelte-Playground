@@ -19,6 +19,7 @@
 	}
 
 	const handleFlipTile = () => {
+		if (tech.done) return;
 		dispatch('flip', tech);
 		frontFaced = !frontFaced;
 	};
@@ -46,7 +47,7 @@
 	.tile {
 		backface-visibility: hidden;
 		transform-style: preserve-3d;
-		transition: all 0.5s ease-in-out;
+		transition: all 0.4s ease-in-out;
 		top: 0;
 		left: 0;
 	}
