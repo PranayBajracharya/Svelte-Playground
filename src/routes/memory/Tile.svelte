@@ -39,7 +39,7 @@
 		class:front-face={!frontFaced}
 		class:back-face={frontFaced}
 	>
-		<img class="w-[50%]" src={`src/lib/icons/${tech.name}.svg`} alt="Svelte" />
+		<img class="w-[50%]" src={`/icons/${tech.name}.svg`} alt="Svelte" />
 	</div>
 </div>
 

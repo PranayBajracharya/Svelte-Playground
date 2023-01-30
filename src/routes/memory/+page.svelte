@@ -20,8 +20,6 @@
 	let time = 0;
 
 	const handleFlip = (event: { detail: TileSchema }) => {
-		console.log(stack, event.detail);
-
 		if (stack.length > 0 && stack[0].index === event.detail.index) {
 			stack.pop();
 			stack = stack;
