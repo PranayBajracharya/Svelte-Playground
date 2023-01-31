@@ -2,7 +2,7 @@
 	import autoAnimateTS from '@formkit/auto-animate';
 	const autoAnimate = autoAnimateTS as any;
 
-	import type { TodoSchema } from 'src/schema/interface';
+	import type { TodoSchema } from '$schema/interface';
 	import TodoListItem from './TodoListItem.svelte';
 	import '../styles.css';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import type { TodoSchema } from 'src/schema/interface';
+	import type { TodoSchema } from '$schema/interface';
 
 	export let todo: TodoSchema;
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import astro from '$lib/icons/astro.svg';
-	import type { TileSchema } from 'src/schema/interface';
+	import astro from '$icons/astro.svg';
+	import type { TileSchema } from '$schema/interface';
 
 	const dispatch = createEventDispatcher();
 
