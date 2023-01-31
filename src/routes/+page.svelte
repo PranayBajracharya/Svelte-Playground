@@ -9,7 +9,7 @@
 	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
-<section class="container flex flex-col flex-[0.6] justify-center items-center w-full">
+<section class="container flex w-full flex-[0.6] flex-col items-center justify-center">
 	<h1 class="w-full">
 		<span class="welcome">
 			<picture>

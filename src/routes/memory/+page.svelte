@@ -68,10 +68,10 @@
 	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
-<div class="m-auto flex flex-col px-6">
+<div class="m-auto flex flex-col px-6 ">
 	<div class="flex items-center justify-between">
 		<h1>Memory</h1>
-		<div class="div">
+		<div>
 			<button class="rounded-lg bg-amber-300 py-2 px-4 text-zinc-900">New game</button>
 		</div>
 	</div>

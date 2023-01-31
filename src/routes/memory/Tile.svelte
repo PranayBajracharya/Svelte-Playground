@@ -26,16 +26,16 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="aspect-square max-h-[10vh] rounded-full relative select-none" on:click={handleFlipTile}>
+<div class="relative aspect-square max-h-[10vh] select-none rounded-full" on:click={handleFlipTile}>
 	<div
-		class="grid place-items-center h-full w-full rounded-full bg-slate-700 tile"
+		class="tile grid h-full w-full   place-items-center rounded-full  bg-slate-700"
 		class:front-face={frontFaced}
 		class:back-face={!frontFaced}
 	>
 		<img class="w-[50%]" src={astro} alt="Svelte" />
 	</div>
 	<div
-		class="grid place-items-center h-full w-full rounded-full bg-slate-100 tile"
+		class="tile grid h-full w-full place-items-center rounded-full bg-slate-100"
 		class:front-face={!frontFaced}
 		class:back-face={frontFaced}
 	>
