@@ -4,6 +4,10 @@
 	import type { TileSchema } from '$schema/interface';
 	import Tile from './Tile.svelte';
 
+	export let data;
+
+	// console.log({ data });
+
 	const randomisedTechArray = shuffleArray(techArray);
 	const pairedTechArray = [...randomisedTechArray, ...randomisedTechArray];
 	const randomisedPair = shuffleArray(pairedTechArray);
