@@ -18,14 +18,29 @@
 	let score = 0;
 	let moves = 0;
 	let time = 0;
+	let hasTimerStarted = false;
+
+	let timer: NodeJS.Timer;
+
+	const startTimer = () => {
+		timer = setInterval(() => {
+			time += 10;
+		}, 10);
+	};
 
 	const handleFlip = (event: { detail: TileSchema }) => {
+		if (!hasTimerStarted) {
+			startTimer();
+			hasTimerStarted = true;
+		}
+
 		if (stack.length > 0 && stack[0].index === event.detail.index) {
 			stack.pop();
 			stack = stack;
 			return;
 		}
-		stack = [...stack, event.detail];
+		stack.push(event.detail);
+		stack = stack;
 	};
 
 	$: if (stack.length > 1) {
@@ -58,9 +73,9 @@
 		reset = false;
 	}
 
-	const timer = setInterval(() => {
-		time += 10;
-	}, 10);
+	$: if (score === 15) {
+		clearInterval(timer);
+	}
 </script>
 
 <svelte:head>

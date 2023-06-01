@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import astro from '$icons/astro.svg';
+	import DefaultLogo from '$icons/svelte.svg';
 	import type { TileSchema } from '$schema/interface';
 
 	const dispatch = createEventDispatcher();
@@ -26,13 +26,16 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="relative aspect-square max-h-[10vh] select-none rounded-full" on:click={handleFlipTile}>
+<div
+	class="relative aspect-square w-[60px] select-none rounded-full sm:w-[85px]"
+	on:click={handleFlipTile}
+>
 	<div
-		class="tile grid h-full w-full   place-items-center rounded-full  bg-slate-700"
+		class="tile grid h-full w-full place-items-center rounded-full bg-slate-700"
 		class:front-face={frontFaced}
 		class:back-face={!frontFaced}
 	>
-		<img class="w-[50%]" src={astro} alt="Svelte" />
+		<img class="w-[50%] drop-shadow-md grayscale" src={DefaultLogo} alt="Svelte" />
 	</div>
 	<div
 		class="tile grid h-full w-full place-items-center rounded-full bg-slate-100"
