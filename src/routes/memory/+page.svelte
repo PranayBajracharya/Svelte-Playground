@@ -4,7 +4,7 @@
 	import type { TileSchema } from '$schema/interface';
 	import Tile from './Tile.svelte';
 
-	export let data;
+	// export let data;
 
 	// console.log({ data });
 
