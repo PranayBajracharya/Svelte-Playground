@@ -91,7 +91,7 @@
 			<Dropdown />
 		</div>
 		<div>
-			<button class="rounded-lg bg-amber-300 py-2 px-4 text-zinc-900">New game</button>
+			<button class="bg-amber-300 text-zinc-900 rounded-lg py-2 px-4">New game</button>
 		</div>
 	</div>
 	<div class="my-6">
@@ -104,13 +104,13 @@
 	<div>
 		<div class="flex justify-around">
 			<div
-				class="flex w-44 max-w-[45%] justify-between gap-2 rounded-lg bg-amber-300 py-2 px-4 text-zinc-900"
+				class="bg-amber-300 text-zinc-900 flex w-44 max-w-[45%] justify-between gap-2 rounded-lg py-2 px-4"
 			>
 				<h3 class="">Time:</h3>
 				<h3 class="">{formatTime(time)}</h3>
 			</div>
 			<div
-				class="flex w-44 max-w-[45%] justify-between gap-2 rounded-lg bg-amber-300 py-2 px-4 text-zinc-900"
+				class="bg-amber-300 text-zinc-900 flex w-44 max-w-[45%] justify-between gap-2 rounded-lg py-2 px-4"
 			>
 				<h3 class="">Moves:</h3>
 				<h3 class="">{moves}</h3>
