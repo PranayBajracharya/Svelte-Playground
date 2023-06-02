@@ -3,10 +3,7 @@
 	import { formatTime, shuffleArray } from '$utils/common';
 	import type { TileSchema } from '$schema/interface';
 	import Tile from './Tile.svelte';
-
-	// export let data;
-
-	// console.log({ data });
+	import Dropdown from './Dropdown.svelte';
 
 	const randomisedTechArray = shuffleArray(techArray);
 	const pairedTechArray = [...randomisedTechArray, ...randomisedTechArray];
@@ -89,7 +86,10 @@
 
 <div class="m-auto flex flex-col px-6 ">
 	<div class="flex items-center justify-between">
-		<h1>Memory</h1>
+		<div class="relative flex">
+			<h1>Memory</h1>
+			<Dropdown />
+		</div>
 		<div>
 			<button class="rounded-lg bg-amber-300 py-2 px-4 text-zinc-900">New game</button>
 		</div>
