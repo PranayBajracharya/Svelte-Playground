@@ -2,7 +2,7 @@
 	import autoAnimateTS from '@formkit/auto-animate';
 	const autoAnimate = autoAnimateTS as any;
 
-	import type { TodoSchema } from '$schema/interface';
+	import type { TodoSchema } from '$schema/types/todo';
 	import TodoListItem from './TodoListItem.svelte';
 	import '../styles.css';
 
@@ -41,7 +41,7 @@
 
 <div class="flex flex-col items-center">
 	<h1 class="my-4">To do list</h1>
-	<div class="max-w-[90vw] w-[24rem]">
+	<div class="w-[24rem] max-w-[90vw]">
 		<form on:submit|preventDefault={handleSubmit}>
 			<input type="text" class={error ? 'error' : ''} bind:value={text} on:input={removeError} />
 		</form>

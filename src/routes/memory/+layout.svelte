@@ -2,8 +2,8 @@
 	import Dropdown from './Dropdown.svelte';
 </script>
 
-<div class="flex w-[630px] max-w-[90%] flex-col px-1 sm:px-6">
-	<div class="flex items-center justify-between">
+<div class="flex w-[630px] max-w-[90%] flex-col">
+	<div class="mb-5 flex items-center justify-between">
 		<div class="relative flex">
 			<h1>Memory</h1>
 			<Dropdown />

@@ -31,15 +31,15 @@
 {#if isOpen}
 	<ul class="absolute top-full right-0 z-10 bg-slate-600">
 		{#each dropDownList as dropdown}
-			<li
-				class="group cursor-pointer p-4"
+			<button
+				class="group w-full cursor-pointer p-4"
 				class:bg-primary={currentRoute === dropdown.link}
 				on:click={() => handleNavigation(dropdown.link)}
 			>
 				<span class="group-hover:underline" class:text-white={currentRoute === dropdown.link}
 					>{dropdown.text}
 				</span>
-			</li>
+			</button>
 		{/each}
 	</ul>
 {/if}

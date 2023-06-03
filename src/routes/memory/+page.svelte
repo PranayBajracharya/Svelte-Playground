@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { FLIP_TIME, techArray } from '$data/memory';
 	import { formatTime, shuffleArray } from '$utils/common';
-	import type { TileSchema } from '$schema/interface';
+	import type { TileSchema } from '$schema/types/memory';
 	import Tile from './Tile.svelte';
 
 	const randomisedTechArray = shuffleArray(techArray);
@@ -83,7 +83,7 @@
 	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
-<div class="my-6">
+<div class="mb-6">
 	<div class="grid grid-cols-5 gap-2 sm:grid-cols-6 sm:gap-6">
 		{#each finalTechArray as tech}
 			<Tile {tech} {reset} on:flip={handleFlip} />

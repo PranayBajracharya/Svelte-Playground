@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import DefaultLogo from '$icons/svelte.svg';
-	import type { TileSchema } from '$schema/interface';
+	import type { TileSchema } from '$schema/types/memory';
 
 	const dispatch = createEventDispatcher();
 
