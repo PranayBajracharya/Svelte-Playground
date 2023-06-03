@@ -3,7 +3,6 @@
 	import { formatTime, shuffleArray } from '$utils/common';
 	import type { TileSchema } from '$schema/interface';
 	import Tile from './Tile.svelte';
-	import Dropdown from './Dropdown.svelte';
 
 	const randomisedTechArray = shuffleArray(techArray);
 	const pairedTechArray = [...randomisedTechArray, ...randomisedTechArray];
@@ -84,40 +83,26 @@
 	<meta name="description" content="Svelte practice" />
 </svelte:head>
 
-<div class="m-auto flex flex-col px-6 ">
-	<div class="flex items-center justify-between">
-		<div class="relative flex">
-			<h1>Memory</h1>
-			<Dropdown />
-		</div>
-		<div>
-			<button class="bg-amber-300 text-zinc-900 rounded-lg py-2 px-4">New game</button>
-		</div>
+<div class="my-6">
+	<div class="grid grid-cols-5 gap-2 sm:grid-cols-6 sm:gap-6">
+		{#each finalTechArray as tech}
+			<Tile {tech} {reset} on:flip={handleFlip} />
+		{/each}
 	</div>
-	<div class="my-6">
-		<div class="grid grid-cols-5 gap-2 sm:grid-cols-6 sm:gap-6">
-			{#each finalTechArray as tech}
-				<Tile {tech} {reset} on:flip={handleFlip} />
-			{/each}
+</div>
+<div>
+	<div class="flex justify-around">
+		<div
+			class="flex w-44 max-w-[45%] justify-between gap-2 rounded-lg bg-amber-300 py-2 px-4 text-zinc-900"
+		>
+			<h3 class="">Time:</h3>
+			<h3 class="">{formatTime(time)}</h3>
 		</div>
-	</div>
-	<div>
-		<div class="flex justify-around">
-			<div
-				class="bg-amber-300 text-zinc-900 flex w-44 max-w-[45%] justify-between gap-2 rounded-lg py-2 px-4"
-			>
-				<h3 class="">Time:</h3>
-				<h3 class="">{formatTime(time)}</h3>
-			</div>
-			<div
-				class="bg-amber-300 text-zinc-900 flex w-44 max-w-[45%] justify-between gap-2 rounded-lg py-2 px-4"
-			>
-				<h3 class="">Moves:</h3>
-				<h3 class="">{moves}</h3>
-			</div>
+		<div
+			class="flex w-44 max-w-[45%] justify-between gap-2 rounded-lg bg-amber-300 py-2 px-4 text-zinc-900"
+		>
+			<h3 class="">Moves:</h3>
+			<h3 class="">{moves}</h3>
 		</div>
 	</div>
 </div>
-
-<style>
-</style>
