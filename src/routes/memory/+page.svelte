@@ -76,7 +76,7 @@
 	const handleComplete = async () => {
 		clearInterval(timer);
 
-		await fetch('/memory', {
+		await fetch('/api/memory', {
 			method: 'POST',
 			body: JSON.stringify({
 				email: 'test@test.com',

@@ -1,6 +1,6 @@
+import { supabase } from '$lib/db/supabaseClient';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { supabase } from '$lib/db/supabaseClient';
 
 export const POST = (async ({ request }) => {
 	const body = await request.json();
