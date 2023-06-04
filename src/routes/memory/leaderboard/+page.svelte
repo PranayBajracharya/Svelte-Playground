@@ -12,14 +12,14 @@
 		<tr>
 			<th>Email</th>
 			<th>Moves</th>
-			<th>Time</th>
+			<th>Time (sec)</th>
 		</tr>
 	</thead>
 	{#each scoreList as score}
 		<tr>
 			<td>{score.email}</td>
 			<td>{score.moves}</td>
-			<td>{score.time}</td>
+			<td>{score.time / 1000}</td>
 		</tr>
 	{/each}
 </table>

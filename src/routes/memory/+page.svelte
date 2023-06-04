@@ -73,8 +73,24 @@
 		reset = false;
 	}
 
-	$: if (score === 15) {
+	const handleComplete = async () => {
 		clearInterval(timer);
+
+		await fetch('/memory', {
+			method: 'POST',
+			body: JSON.stringify({
+				email: 'test@test.com',
+				moves,
+				time
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	};
+
+	$: if (score === 15) {
+		handleComplete();
 	}
 </script>
 
@@ -95,14 +111,14 @@
 		<div
 			class="flex w-44 max-w-[45%] justify-between gap-2 rounded-lg bg-amber-300 py-2 px-4 text-zinc-900"
 		>
-			<h3 class="">Time:</h3>
-			<h3 class="">{formatTime(time)}</h3>
+			<h3>Time:</h3>
+			<h3>{formatTime(time)}</h3>
 		</div>
 		<div
 			class="flex w-44 max-w-[45%] justify-between gap-2 rounded-lg bg-amber-300 py-2 px-4 text-zinc-900"
 		>
-			<h3 class="">Moves:</h3>
-			<h3 class="">{moves}</h3>
+			<h3>Moves:</h3>
+			<h3>{moves}</h3>
 		</div>
 	</div>
 </div>
