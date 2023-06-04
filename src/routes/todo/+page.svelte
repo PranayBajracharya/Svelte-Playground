@@ -1,6 +1,5 @@
 <script lang="ts">
-	import autoAnimateTS from '@formkit/auto-animate';
-	const autoAnimate = autoAnimateTS as any;
+	import autoAnimate from '@formkit/auto-animate';
 
 	import type { TodoSchema } from '$schema/types/todo';
 	import TodoListItem from './TodoListItem.svelte';
