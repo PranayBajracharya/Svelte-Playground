@@ -32,7 +32,11 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/pranaybajracharya" target="_blank" rel="noopener noreferrer">
+		<a
+			href="https://github.com/PranayBajracharya/Svelte-Playground"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
 			<img src={github} class="github-img" alt="GitHub" />
 		</a>
 	</div>
