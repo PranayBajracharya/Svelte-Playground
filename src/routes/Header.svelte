@@ -1,14 +1,21 @@
 <script type="ts">
 	import { page } from '$app/stores';
+	import { signIn, signOut } from '@auth/sveltekit/client';
 	import logo from '$icons/svelte.svg';
 	import github from '$icons/github.svg';
 </script>
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
+		<!-- <a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
 			<img src={logo} alt="SvelteKit" />
-		</a>
+		</a> -->
+		<!-- <a href="/auth/signin">
+			<img src={logo} alt="SvelteKit" />
+		</a> -->
+		<button on:click={() => signIn('github')}>
+			<img src={logo} alt="SvelteKit" />
+		</button>
 	</div>
 
 	<nav>

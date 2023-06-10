@@ -3,6 +3,8 @@
 	import { formatTime, shuffleArray } from '$utils/common';
 	import type { TileSchema } from '$schema/types/memory';
 	import Tile from './Tile.svelte';
+	import { page } from '$app/stores';
+	import { get } from 'svelte/store';
 
 	const randomisedTechArray = shuffleArray(techArray);
 	const pairedTechArray = [...randomisedTechArray, ...randomisedTechArray];
@@ -75,11 +77,16 @@
 
 	const handleComplete = async () => {
 		clearInterval(timer);
+		const { data } = get(page);
 
+		if (!data.session) {
+			console.log('Not logged in');
+		}
 		await fetch('/api/memory', {
 			method: 'POST',
 			body: JSON.stringify({
-				email: 'test@test.com',
+				email: data.session?.user?.email,
+				// name: data.session?.user?.name,
 				moves,
 				time
 			}),
