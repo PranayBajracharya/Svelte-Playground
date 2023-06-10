@@ -6,16 +6,15 @@
 </script>
 
 <header>
-	<div class="corner">
-		<!-- <a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
-			<img src={logo} alt="SvelteKit" />
-		</a> -->
-		<!-- <a href="/auth/signin">
-			<img src={logo} alt="SvelteKit" />
-		</a> -->
-		<button on:click={() => signIn('github')}>
-			<img src={logo} alt="SvelteKit" />
-		</button>
+	<div>
+		<a
+			class="grid h-16 w-16 place-items-center"
+			href="https://github.com/PranayBajracharya/Svelte-Playground"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<img class="h-8 w-8" src={logo} alt="SvelteKit" />
+		</a>
 	</div>
 
 	<nav>
@@ -38,14 +37,20 @@
 		</svg>
 	</nav>
 
-	<div class="corner">
-		<a
-			href="https://github.com/PranayBajracharya/Svelte-Playground"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<img src={github} class="github-img" alt="GitHub" />
-		</a>
+	<div>
+		{#if $page.data.session?.user}
+			<button class="grid h-16 w-16 place-items-center" on:click={() => signOut()}>
+				<img
+					src={$page.data.session?.user?.image}
+					class="h-8 w-8 rounded-full"
+					alt={$page.data.session?.user?.name}
+				/>
+			</button>
+		{:else}
+			<button class="grid h-16 w-16 place-items-center" on:click={() => signIn('github')}>
+				<img src={github} class="h-8 w-8 invert filter" alt="GitHub" />
+			</button>
+		{/if}
 	</div>
 </header>
 
@@ -53,29 +58,6 @@
 	header {
 		display: flex;
 		justify-content: space-between;
-	}
-
-	.corner {
-		width: 4.5em;
-		height: 4em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	.github-img {
-		filter: invert(100%);
 	}
 
 	nav {

@@ -7,6 +7,10 @@ import { sequence } from '@sveltejs/kit/hooks';
 
 const handleAuth = SvelteKitAuth({
 	providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET }) as any]
+	// adapter: SupabaseAdapter({
+	// 	url: SUPABASE_URL,
+	// 	secret: ANON_KEY
+	// }) as any
 }) satisfies Handle;
 
 export const handle = sequence(handleAuth);
