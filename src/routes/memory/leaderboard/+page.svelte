@@ -10,6 +10,7 @@
 <table>
 	<thead>
 		<tr>
+			<th>Name</th>
 			<th>Email</th>
 			<th>Moves</th>
 			<th>Time (sec)</th>
@@ -17,6 +18,7 @@
 	</thead>
 	{#each scoreList as score}
 		<tr>
+			<td>{score.name}</td>
 			<td>{score.email}</td>
 			<td>{score.moves}</td>
 			<td>{score.time / 1000}</td>

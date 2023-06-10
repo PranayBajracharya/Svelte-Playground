@@ -9,5 +9,6 @@ export type Score = {
 	created_at: string;
 	time: number;
 	moves: string;
+	name: string;
 	email: string;
 };

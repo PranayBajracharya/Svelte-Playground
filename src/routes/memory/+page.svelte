@@ -86,7 +86,7 @@
 			method: 'POST',
 			body: JSON.stringify({
 				email: data.session?.user?.email,
-				// name: data.session?.user?.name,
+				name: data.session?.user?.name,
 				moves,
 				time
 			}),
