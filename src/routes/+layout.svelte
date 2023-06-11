@@ -1,16 +1,31 @@
 <script>
+	import { invalidateAll } from '$app/navigation';
+	import { supabase } from '$lib/db/supabaseClient';
+	import { onMount } from 'svelte';
 	import Header from './Header.svelte';
 	import './styles.css';
+
+	onMount(() => {
+		const {
+			data: { subscription }
+		} = supabase.auth.onAuthStateChange(() => {
+			invalidateAll();
+		});
+
+		return () => {
+			subscription.unsubscribe();
+		};
+	});
 </script>
 
-<div class="flex flex-col min-h-screen">
+<div class="flex min-h-screen flex-col">
 	<Header />
 
-	<main class="flex flex-col items-center flex-1">
+	<main class="flex flex-1 flex-col items-center">
 		<slot />
 	</main>
 
-	<footer class="p-2 sm:p-3 text-center">
+	<footer class="p-2 text-center sm:p-3">
 		<p>
 			Visit my <a
 				href="https://github.com/pranaybajracharya"
