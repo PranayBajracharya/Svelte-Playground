@@ -16,8 +16,6 @@
 		}
 	];
 
-	let currentRoute = $page.url.pathname;
-
 	function handleNavigation(link: string) {
 		goto(link);
 		isOpen = !isOpen;
@@ -33,10 +31,10 @@
 		{#each dropDownList as dropdown}
 			<button
 				class="group w-full cursor-pointer p-4"
-				class:bg-primary={currentRoute === dropdown.link}
+				class:bg-custom-primary={$page.url.pathname === dropdown.link}
 				on:click={() => handleNavigation(dropdown.link)}
 			>
-				<span class="group-hover:underline" class:text-white={currentRoute === dropdown.link}
+				<span class="group-hover:underline" class:text-white={$page.url.pathname === dropdown.link}
 					>{dropdown.text}
 				</span>
 			</button>
