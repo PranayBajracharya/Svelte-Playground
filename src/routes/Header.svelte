@@ -1,6 +1,5 @@
 <script type="ts">
 	import { page } from '$app/stores';
-	import { signIn, signOut } from '@auth/sveltekit/client';
 	import logo from '$icons/svelte.svg';
 	import github from '$icons/github.svg';
 </script>
@@ -39,7 +38,7 @@
 
 	<div>
 		{#if $page.data.session?.user}
-			<button class="grid h-16 w-16 place-items-center" on:click={() => signOut()}>
+			<button class="grid h-16 w-16 place-items-center" on:click={() => {}}>
 				<img
 					src={$page.data.session?.user?.image}
 					class="h-8 w-8 rounded-full"
@@ -47,7 +46,7 @@
 				/>
 			</button>
 		{:else}
-			<button class="grid h-16 w-16 place-items-center" on:click={() => signIn('github')}>
+			<button class="grid h-16 w-16 place-items-center" on:click={() => {}}>
 				<img src={github} class="h-8 w-8 invert filter" alt="GitHub" />
 			</button>
 		{/if}

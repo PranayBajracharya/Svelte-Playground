@@ -1,16 +1,24 @@
-import { SvelteKitAuth } from '@auth/sveltekit';
-import GitHub from '@auth/core/providers/github';
-import { GITHUB_ID, GITHUB_SECRET, SUPABASE_URL, SERVICE_ROLE_SECRET } from '$env/static/private';
+import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
+import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import type { Handle } from '@sveltejs/kit';
-import { sequence } from '@sveltejs/kit/hooks';
-// import { SupabaseAdapter } from '@next-auth/supabase-adapter';
 
-const handleAuth = SvelteKitAuth({
-	// adapter: SupabaseAdapter({
-	// 	url: SUPABASE_URL,
-	// 	secret: SERVICE_ROLE_SECRET
-	// }) as any,
-	providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET }) as any]
-}) satisfies Handle;
+export const handle: Handle = async ({ event, resolve }) => {
+	event.locals.supabase = createSupabaseServerClient({
+		supabaseUrl: PUBLIC_SUPABASE_URL,
+		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
+		event
+	});
 
-export const handle = sequence(handleAuth);
+	event.locals.getSession = async () => {
+		const {
+			data: { session }
+		} = await event.locals.supabase.auth.getSession();
+		return session;
+	};
+
+	return resolve(event, {
+		filterSerializedResponseHeaders(name) {
+			return name === 'content-range';
+		}
+	});
+};
