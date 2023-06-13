@@ -3,16 +3,6 @@
 	import { formatTime, shuffleArray } from '$utils/common';
 	import type { TileSchema } from '$schema/types/memory';
 	import Tile from './Tile.svelte';
-	import { page } from '$app/stores';
-
-	const randomisedTechArray = shuffleArray(techArray);
-	const pairedTechArray = [...randomisedTechArray, ...randomisedTechArray];
-	const randomisedPair = shuffleArray(pairedTechArray);
-	let finalTechArray = randomisedPair.map((tech, index) => ({
-		name: tech,
-		index,
-		done: false
-	}));
 
 	let stack: TileSchema[] = [];
 	let reset = false;
@@ -22,6 +12,25 @@
 	let hasTimerStarted = false;
 
 	let timer: NodeJS.Timer;
+
+	const newGame = () => {
+		stack = [];
+		reset = false;
+		score = 0;
+		moves = 0;
+		time = 0;
+		hasTimerStarted = false;
+		clearInterval(timer);
+		const randomisedTechArray = shuffleArray(techArray);
+		const pairedTechArray = [...randomisedTechArray, ...randomisedTechArray];
+		const randomisedPair = shuffleArray(pairedTechArray);
+		return randomisedPair.map((tech, index) => ({
+			name: tech,
+			index,
+			done: false
+		}));
+	};
+	let finalTechArray = newGame();
 
 	const startTimer = () => {
 		timer = setInterval(() => {
@@ -76,15 +85,17 @@
 
 	const handleComplete = async () => {
 		clearInterval(timer);
-		const {
-			data: { session }
-		} = $page;
+		// const {
+		// 	data: { session }
+		// } = $page;
 
-		if (!session?.user) {
-			console.log('Not logged in');
-			return;
-		}
-		const { email, name } = session.user;
+		// if (!session?.user) {
+		// 	console.log('Not logged in');
+		// 	return;
+		// }
+		// const { email, name } = session.user;
+		const name = prompt('Please enter your name:');
+		const email = prompt('Please enter your email:');
 		await fetch('/api/memory', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -97,6 +108,7 @@
 				'Content-Type': 'application/json'
 			}
 		});
+		// newGame();
 	};
 
 	$: if (score === 15) {
