@@ -1,6 +1,5 @@
 <script type="ts">
 	import { page } from '$app/stores';
-	import { signIn, signOut } from '@auth/sveltekit/client';
 	import logo from '$icons/svelte.svg';
 	import github from '$icons/github.svg';
 </script>
@@ -38,7 +37,7 @@
 	</nav>
 
 	<div>
-		{#if $page.data.session?.user}
+		<!-- {#if $page.data.session?.user}
 			<button class="grid h-16 w-16 place-items-center" on:click={() => signOut()}>
 				<img
 					src={$page.data.session?.user?.image}
@@ -50,7 +49,15 @@
 			<button class="grid h-16 w-16 place-items-center" on:click={() => signIn('github')}>
 				<img src={github} class="h-8 w-8 invert filter" alt="GitHub" />
 			</button>
-		{/if}
+		{/if} -->
+		<a
+			class="grid h-16 w-16 place-items-center"
+			href="https://github.com/PranayBajracharya/Svelte-Playground"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<img src={github} class="h-8 w-8 invert filter" alt="GitHub" />
+		</a>
 	</div>
 </header>
 

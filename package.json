@@ -36,10 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@auth/core": "^0.8.2",
-		"@auth/sveltekit": "^0.3.1",
 		"@formkit/auto-animate": "1.0.0-beta.6",
-		"@next-auth/supabase-adapter": "^0.2.1",
 		"@supabase/supabase-js": "^2.24.0"
 	}
 }
