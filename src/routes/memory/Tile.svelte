@@ -25,9 +25,9 @@
 	};
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div
+<button
 	class="relative aspect-square w-[60px] select-none rounded-full sm:w-[85px]"
+	disabled={!frontFaced}
 	on:click={handleFlipTile}
 >
 	<div
@@ -44,7 +44,7 @@
 	>
 		<img class="w-[50%]" src={`/icons/${tech.name}.svg`} alt="Svelte" />
 	</div>
-</div>
+</button>
 
 <style>
 	.tile {
